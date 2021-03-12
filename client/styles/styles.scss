@@ -3,7 +3,7 @@ a {
 }
 
 .search {
-    margin: 20px;
+    margin: 20px auto;
     width: 500px;
 }
 
@@ -28,6 +28,55 @@ a {
             font-size: 0.9rem;
             color: #4a4a4a;
             min-height: 100px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+        }
+
+        .card-columns {
+            column-count: 3
+        }
+
+        img {
+            height: 250px;
+            object-fit: cover;
+        }
+    }
+}
+
+.restaurant-detail {
+    margin-top: 30px;
+
+    p.description {
+        color: #6d6d6d;
+        font-size: 0.9em;
+    }
+
+    h2 {
+        margin: 10px 0;
+    }
+
+    .card {
+        margin: 0 0 20px 0;
+
+        .card-title {
+            font-size: 1.4rem;
+
+            a {
+                color: #333;
+
+                &:hover {
+                    text-decoration: none;
+                    color: #326895;
+                }
+            }
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: #4a4a4a;
+            min-height: 50px;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 5;

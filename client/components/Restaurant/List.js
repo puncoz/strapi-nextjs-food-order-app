@@ -68,9 +68,7 @@ const RestaurantList = ({ search }) => {
 
                         <CardBody>
                             <CardTitle>
-                                <Link
-                                    as={`/restaurants/${restaurant.id}`}
-                                    href={`/restaurants?id=${restaurant.id}`}>
+                                <Link href={`/restaurants/${restaurant.id}`}>
                                     <a>
                                         {restaurant.name}
 

@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "restaurants",
+  "collectionName": "dishes",
   "info": {
-    "name": "restaurant",
-    "description": ""
+    "name": "dish"
   },
   "options": {
     "increments": true,
@@ -28,9 +27,12 @@
       "plugin": "upload",
       "required": false
     },
-    "dishes": {
-      "via": "restaurant",
-      "collection": "dish"
+    "price": {
+      "type": "decimal"
+    },
+    "restaurant": {
+      "model": "restaurant",
+      "via": "dishes"
     }
   }
 }
