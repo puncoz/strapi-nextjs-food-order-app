@@ -1,6 +1,7 @@
 import Head                from "next/head"
 import React, { Fragment } from "react"
 import Layout              from "../components/Layout"
+import withApollo          from "../lib/apollo"
 import "../styles/styles.scss"
 
 const MyApp = ({ Component, pageProps }) => (
@@ -22,4 +23,4 @@ const MyApp = ({ Component, pageProps }) => (
     </Fragment>
 )
 
-export default MyApp
+export default withApollo({ ssr: true })(MyApp)
