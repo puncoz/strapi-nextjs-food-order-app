@@ -1,3 +1,4 @@
+import fetch       from "isomorphic-fetch"
 import cookie      from "js-cookie"
 import Head        from "next/head"
 import React, {
@@ -12,6 +13,10 @@ import "../styles/styles.scss"
 
 const MyApp = ({ Component, pageProps }) => {
     const [user, setUser] = useState(null)
+    const [cart, setCart] = useState({
+        items: [],
+        total: 0,
+    })
 
     useEffect(() => {
         // grab the token from cookie
@@ -39,12 +44,94 @@ const MyApp = ({ Component, pageProps }) => {
         }
     }, [])
 
+    useEffect(() => {
+        // restore cart from cookie, this could also be tracked in a db
+        const cart = cookie.get("cart")
+
+        // if items in cart, set items and total to state
+        if (typeof cart === "string" && cart !== "undefined") {
+            const cartData = JSON.parse(cart)
+            const total = cartData.reduce((total, item) => total + item.price * item.quantity, 0)
+
+            setCart({ items: cartData, total })
+        }
+    }, [])
+
+    useEffect(() => {
+        cookie.set("cart", JSON.stringify(cart.items))
+    }, [cart])
+
+    const addItemToCart = (item) => {
+        // check for item already in cart
+        // if not in cart, add item else if item is found increment quantity
+        const itemExists = cart.items.find(i => i.id === item.id)
+
+        if (!itemExists) {
+            setCart(prevCart => ({
+                items: [...prevCart.items, { ...item, quantity: 1 }],
+                total: prevCart.total + item.price,
+            }))
+
+            return
+        }
+
+        setCart(
+            prevCart => ({
+                items: prevCart.items.map(i => {
+                    if (i.id === item.id) {
+                        return { ...i, quantity: i.quantity + 1 }
+                    }
+
+                    return i
+                }),
+                total: prevCart.total + item.price,
+            }),
+        )
+    }
+
+    const removeItemFromCart = (item) => {
+        // check for item already in cart
+        // if quantity is more then  in cart, subtract item else remove item
+        const itemInCart = cart.items.find(i => i.id === item.id)
+
+        if (!itemInCart) {
+            return
+        }
+
+        if (itemInCart.quantity === 1) {
+            setCart(prevCart => {
+                const items = prevCart.items
+                const index = items.findIndex(i => i.id === item.id)
+
+                items.splice(index, 1)
+
+                return { items, total: prevCart.total - item.price }
+            })
+
+            return
+        }
+
+        setCart(prevCart => ({
+            items: prevCart.items.map(i => {
+                if (i.id === item.id) {
+                    return { ...i, quantity: item.quantity - 1 }
+                }
+
+                return i
+            }),
+            total: prevCart.total - item.price,
+        }))
+    }
+
     return (
         <AppContext.Provider
             value={{
                 user,
                 isAuthenticated: !!user,
                 setUser,
+                cart,
+                addItemToCart,
+                removeItemFromCart,
             }}>
             <Head>
                 <title>Food Ordering App</title>

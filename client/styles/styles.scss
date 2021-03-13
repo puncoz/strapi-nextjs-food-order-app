@@ -146,3 +146,75 @@ a {
         }
     }
 }
+
+.cart {
+    .card {
+        padding: 10px 5px;
+
+        .card-title {
+            margin: 0 10px;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+    }
+
+    .item {
+        margin-bottom: 15px;
+
+        &-name {
+            font-size: 1em;
+            color: rgba(97, 97, 97, 1)
+        }
+
+        &-price {
+            font-size: 1em;
+            color: rgba(97, 97, 97, 1);
+            margin-left: 15px;
+        }
+
+        &-quantity {
+            font-size: 0.95em;
+            padding-bottom: 4px;
+            color: rgba(158, 158, 158, 1);
+            margin-left: 5px;
+        }
+
+        .btn {
+            height: 25px;
+            padding: 0;
+            width: 15px;
+
+            &.add-button {
+                margin-right: 5px;
+                margin-left: 10px;
+            }
+
+            &.remove-button {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .total-wrapper {
+        .badge {
+            width: 200px;
+            padding: 10px;
+        }
+
+        .total-label {
+            font-weight: 100;
+            color: gray;
+        }
+
+        .total {
+            font-size: 1rem;
+        }
+
+        .order-btn-wrapper {
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+    }
+}
