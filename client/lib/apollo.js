@@ -5,8 +5,7 @@ import {
     InMemoryCache,
 }                     from "@apollo/client"
 import { withApollo } from "next-apollo"
-
-export const API_URL = process.env.NEXT_PUBLIC_API_URL
+import { API_URL }    from "../config/app.config"
 
 const apolloClient = new ApolloClient({
     uri: `${API_URL}/graphql`,

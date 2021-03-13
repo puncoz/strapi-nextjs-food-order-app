@@ -12,7 +12,7 @@ import {
     Col,
     Row,
 }                  from "reactstrap"
-import { API_URL } from "../../lib/apollo"
+import { API_URL } from "../../config/app.config"
 
 const RestaurantDetail = ({ restaurant }) => (
     <div className="restaurant-detail">
