@@ -90,6 +90,19 @@ const MyApp = ({ Component, pageProps }) => {
     }
 
     const removeItemFromCart = (item) => {
+        setCart(prevCart => {
+            const items = prevCart.items
+            const index = items.findIndex(i => i.id === item.id)
+
+            items.splice(index, 1)
+
+            const total = items.reduce((t, i) => t + (i.quantity * i.price), 0)
+
+            return { items, total }
+        })
+    }
+
+    const decreaseItemFromCart = (item) => {
         // check for item already in cart
         // if quantity is more then  in cart, subtract item else remove item
         const itemInCart = cart.items.find(i => i.id === item.id)
@@ -99,14 +112,7 @@ const MyApp = ({ Component, pageProps }) => {
         }
 
         if (itemInCart.quantity === 1) {
-            setCart(prevCart => {
-                const items = prevCart.items
-                const index = items.findIndex(i => i.id === item.id)
-
-                items.splice(index, 1)
-
-                return { items, total: prevCart.total - item.price }
-            })
+            removeItemFromCart(item)
 
             return
         }
@@ -132,6 +138,7 @@ const MyApp = ({ Component, pageProps }) => {
                 cart,
                 addItemToCart,
                 removeItemFromCart,
+                decreaseItemFromCart,
             }}>
             <Head>
                 <title>Food Ordering App</title>

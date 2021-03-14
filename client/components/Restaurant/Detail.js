@@ -25,7 +25,7 @@ const RestaurantDetail = ({ restaurant }) => {
                 <Col xs="6" sm="2">
                     <img className="img-thumbnail" src={`${API_URL}${restaurant.image.url}`} alt={restaurant.name}/>
                 </Col>
-                <Col>
+                <Col xs="6" sm="5">
                     <h1>{restaurant.name}</h1>
 
                     <p className="description">{restaurant.description}</p>
@@ -49,8 +49,8 @@ const RestaurantDetail = ({ restaurant }) => {
                                         <CardText>{dish.description}</CardText>
                                     </CardBody>
 
-                                    <CardFooter>
-                                        <Button outline color="primary" onClick={() => addItemToCart(dish)}>
+                                    <CardFooter className="add-to-cart-wrapper">
+                                        <Button outline block color="secondary" onClick={() => addItemToCart(dish)}>
                                             + Add to cart
                                         </Button>
                                     </CardFooter>

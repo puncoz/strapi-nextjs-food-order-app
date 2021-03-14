@@ -11,7 +11,7 @@ import {
 const AuthLayout = ({ children, errors }) => (
     <Container className="login-register-page">
         <Row>
-            <Col sm="12" md={{ size: 5, offset: 3 }}>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
                 <div className="paper">
                     <div className="header">
                         <img src="https://strapi.io/assets/strapi-logo-dark.svg" alt="strapi"/>
