@@ -431,6 +431,10 @@ form {
     }
 }
 
+.checkout-page {
+    margin-bottom: 15px;
+}
+
 .checkout-form {
     .paper {
         border: 1px solid lightgray;
@@ -440,6 +444,12 @@ form {
         border-radius: 6px;
         padding: 30px;
         background: #fff;
+    }
+
+    .order-button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
     }
 
     button {

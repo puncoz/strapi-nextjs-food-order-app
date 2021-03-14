@@ -15,7 +15,8 @@ module.exports = {
             state,
             amount,
             dishes,
-            token,
+            stripe_token,
+            payment,
         } = JSON.parse(ctx.request.body)
 
         // transform to cents
@@ -26,14 +27,15 @@ module.exports = {
             amount: stripeAmount,
             currency: "usd",
             description: `Order ${new Date()} by ${ctx.state.user.id}`,
-            source: token,
+            source: stripe_token,
         })
 
         // register the order in database
         return await strapi.services.order.create({
-            user: ctx.state.user.id,
-            charge_id: charge.id,
-            amount: stripeAmount,
+            user_id: ctx.state.user.id,
+            stripe_token,
+            payment,
+            amount: stripeAmount/100,
             address,
             dishes,
             city,

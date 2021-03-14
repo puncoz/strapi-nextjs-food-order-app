@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "03/14/2021 8:35:10 AM"
+    "x-generation-date": "03/14/2021 4:31:59 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4006,9 +4006,6 @@
               "role": {
                 "type": "string"
               },
-              "order": {
-                "type": "string"
-              },
               "created_by": {
                 "type": "string"
               },
@@ -4017,8 +4014,11 @@
               }
             }
           },
-          "charge_id": {
+          "stripe_token": {
             "type": "string"
+          },
+          "payment": {
+            "type": "object"
           }
         }
       },
@@ -4042,8 +4042,11 @@
           "user_id": {
             "type": "string"
           },
-          "charge_id": {
+          "stripe_token": {
             "type": "string"
+          },
+          "payment": {
+            "type": "object"
           },
           "created_by": {
             "type": "string"
@@ -4291,9 +4294,6 @@
                 "role": {
                   "type": "string"
                 },
-                "order": {
-                  "type": "string"
-                },
                 "created_by": {
                   "type": "string"
                 },
@@ -4406,43 +4406,6 @@
                 "type": "string"
               }
             }
-          },
-          "order": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "address": {
-                "type": "string"
-              },
-              "city": {
-                "type": "string"
-              },
-              "dishes": {
-                "type": "object"
-              },
-              "amount": {
-                "type": "number"
-              },
-              "state": {
-                "type": "string"
-              },
-              "user_id": {
-                "type": "string"
-              },
-              "charge_id": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
           }
         }
       },
@@ -4483,9 +4446,6 @@
             "default": false
           },
           "role": {
-            "type": "string"
-          },
-          "order": {
             "type": "string"
           },
           "created_by": {

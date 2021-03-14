@@ -58,10 +58,6 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
-    },
-    "order": {
-      "via": "user_id",
-      "model": "order"
     }
   }
 }

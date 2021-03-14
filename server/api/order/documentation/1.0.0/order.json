@@ -574,9 +574,6 @@
               "role": {
                 "type": "string"
               },
-              "order": {
-                "type": "string"
-              },
               "created_by": {
                 "type": "string"
               },
@@ -585,8 +582,11 @@
               }
             }
           },
-          "charge_id": {
+          "stripe_token": {
             "type": "string"
+          },
+          "payment": {
+            "type": "object"
           }
         }
       },
@@ -610,8 +610,11 @@
           "user_id": {
             "type": "string"
           },
-          "charge_id": {
+          "stripe_token": {
             "type": "string"
+          },
+          "payment": {
+            "type": "object"
           },
           "created_by": {
             "type": "string"

@@ -28,11 +28,13 @@
     },
     "user_id": {
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "order"
+      "model": "user"
     },
-    "charge_id": {
+    "stripe_token": {
       "type": "string"
+    },
+    "payment": {
+      "type": "json"
     }
   }
 }

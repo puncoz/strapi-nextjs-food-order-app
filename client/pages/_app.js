@@ -11,12 +11,14 @@ import AppContext  from "../contexts/AppContext"
 import withApollo  from "../lib/apollo"
 import "../styles/styles.scss"
 
+const EMPTY_CART = {
+    items: [],
+    total: 0,
+}
+
 const MyApp = ({ Component, pageProps }) => {
     const [user, setUser] = useState(null)
-    const [cart, setCart] = useState({
-        items: [],
-        total: 0,
-    })
+    const [cart, setCart] = useState(EMPTY_CART)
 
     useEffect(() => {
         // grab the token from cookie
@@ -129,6 +131,10 @@ const MyApp = ({ Component, pageProps }) => {
         }))
     }
 
+    const clearCart = () => {
+        setCart(EMPTY_CART)
+    }
+
     return (
         <AppContext.Provider
             value={{
@@ -139,6 +145,7 @@ const MyApp = ({ Component, pageProps }) => {
                 addItemToCart,
                 removeItemFromCart,
                 decreaseItemFromCart,
+                clearCart,
             }}>
             <Head>
                 <title>Food Ordering App</title>
